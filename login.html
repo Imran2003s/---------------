@@ -8,6 +8,8 @@
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
+
     <style>
       body {
         margin: 0;
@@ -18,7 +20,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background 0.4s;
       }
       .login-bg {
         width: 100vw;
@@ -26,135 +27,81 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: url(img/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-products-plain-studio-background.jpg);
+        background-image: url("img/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-products-plain-studio-background.jpg");
+        background-size: cover;
         backdrop-filter: blur(2px);
       }
       .login-card {
-        background: rgba(255, 255, 255, 0.97);
+        background: rgba(255, 255, 255, 0.96);
         border-radius: 22px;
         box-shadow: 0 8px 40px rgba(0, 0, 8, 0.18);
-        padding: 2.7rem 2.2rem 2.2rem 2.2rem;
+        padding: 2.5rem 2rem;
         width: 370px;
         max-width: 97vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
-        animation: fadeIn 1.1s cubic-bezier(0.39, 0.58, 0.57, 1) both;
-      }
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
-          transform: translateY(40px) scale(0.98);
-        }
-        100% {
-          opacity: 1;
-          transform: none;
-        }
+        text-align: center;
       }
       .login-form {
-        width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 1.1rem;
-        z-index: 1;
+        gap: 1rem;
       }
       .login-form h2 {
-        text-align: center;
-        color: #000003;
-        margin-bottom: 0.5rem;
-        font-weight: bold;
-        font-size: 1.6rem;
-        letter-spacing: 1px;
+        color: #000;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
       }
       .login-form label {
-        color: #000000;
-        font-size: 1.05rem;
-        margin-bottom: 0.2rem;
-        font-weight: 600;
-        letter-spacing: 0.5px;
+        text-align: right;
+        font-weight: bold;
       }
       .login-form input {
         padding: 0.9rem;
-        border: 1.5px solid #c7d2fe;
+        border: 1.5px solid #ccc;
         border-radius: 10px;
-        font-size: 1.08rem;
+        font-size: 1rem;
+        background: #f9f9f9;
         outline: none;
-        transition: border 0.2s, box-shadow 0.2s;
-        background: #f8fafc;
-        box-shadow: 0 1px 4px rgba(99, 102, 241, 0.04);
       }
       .login-form input:focus {
-        border: 1.5px solid #000003;
-        box-shadow: 0 2px 8px #6366f13a;
-      }
-      .login-form .error {
-        color: #ef4444;
-        font-size: 1.01rem;
-        text-align: right;
-        margin-top: -0.7rem;
-        margin-bottom: -0.7rem;
-        background: #fee2e2;
-        border-radius: 6px;
-        padding: 0.3rem 0.7rem;
-        border: 1px solid #ef4444;
-        animation: shake 0.4s;
-      }
-      @keyframes shake {
-        10%,
-        90% {
-          transform: translateX(-1px);
-        }
-        20%,
-        80% {
-          transform: translateX(2px);
-        }
-        30%,
-        50%,
-        70% {
-          transform: translateX(-4px);
-        }
-        40%,
-        60% {
-          transform: translateX(4px);
-        }
+        border-color: #000;
+        box-shadow: 0 0 5px #0003;
       }
       .login-btn {
-        background: linear-gradient(90deg, #000000 0%, #000000 100%);
-        color: #fff;
+        padding: 1rem;
+        background: black;
+        color: white;
         border: none;
-        padding: 1.05rem;
         border-radius: 10px;
-        font-size: 1.15rem;
         font-weight: bold;
+        font-size: 1.1rem;
         cursor: pointer;
-        margin-top: 0.5rem;
-        transition: background 0.2s, box-shadow 0.2s;
-        box-shadow: 0 2px 12px rgba(99, 102, 241, 0.1);
-        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
       }
       .login-btn:hover {
-        transform: scale(1.02);
-        box-shadow: 0 4px 18px #6366f13a;
+        background: #111;
+      }
+      .error {
+        color: red;
+        font-size: 0.9rem;
+        background: #ffe5e5;
+        padding: 0.5rem;
+        border-radius: 6px;
+        border: 1px solid red;
+        display: none;
       }
       @media (max-width: 480px) {
         .login-card {
-          padding: 1.5rem 0.5rem 1.2rem 0.5rem;
-          width: 98vw;
+          width: 90vw;
+          padding: 1.5rem;
         }
-        .login-form h2 {
-          font-size: 1.1rem;
-        }
+        .login-form input,
         .login-btn {
           font-size: 1rem;
-          padding: 0.7rem;
         }
       }
     </style>
   </head>
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <div class="login-bg">
       <div class="login-card">
         <form class="login-form" onsubmit="return handleLogin(event)">
@@ -162,20 +109,19 @@
           <label for="code">الكود</label>
           <input
             id="code"
-            type="password"
+            type="text"
             placeholder="أدخل الكود الخاص بك"
-            autofocus
             required
           />
-          <div class="error" id="error" style="display: none"></div>
+          <div class="error" id="error"></div>
           <button type="submit" class="login-btn" id="loginBtn">دخول</button>
         </form>
       </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script>
-      // أنشئ كائن supabaseClient بعد تحميل المكتبة
-      const supabaseClient = supabase.createClient(
+      const supabaseClient = window.supabase.createClient(
         "https://dgyxalzqyafyjkbspfun.supabase.co",
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRneXhhbHpxeWFmeWprYnNwZnVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIwNzQ5NDEsImV4cCI6MjA2NzY1MDk0MX0.3RJSsJTBsdM95m_Ov0oaPVqseEYYSHtQz4-_PI293yA"
       );
@@ -185,7 +131,6 @@
         const code = document.getElementById("code").value.trim();
         const errorDiv = document.getElementById("error");
         const btn = document.getElementById("loginBtn");
-        console.log("الكود المدخل:", code);
 
         errorDiv.style.display = "none";
         btn.disabled = true;
@@ -196,9 +141,11 @@
             .from("codes")
             .select("*")
             .eq("code", code)
-            .maybeSingle();
-            
-            
+            .single();
+
+          console.log("🔍 الكود المدخل:", code);
+          console.log("📦 البيانات من Supabase:", data);
+          console.log("❗ الخطأ من Supabase:", error);
 
           btn.disabled = false;
           btn.textContent = "دخول";
@@ -210,13 +157,12 @@
           }
 
           const today = new Date().toISOString().split("T")[0];
-          if (data.expires_at < today) {
+          if (data.expires_at && data.expires_at < today) {
             errorDiv.textContent = "انتهت صلاحية الكود";
             errorDiv.style.display = "block";
             return false;
           }
-
-          // نجاح التحقق: انتقل لصفحة الفيديوهات
+          localStorage.setItem("logged_in", "true");
           window.location.href = "index.html";
         } catch (err) {
           errorDiv.textContent = "حدث خطأ أثناء التحقق: " + err.message;
@@ -224,8 +170,6 @@
           btn.disabled = false;
           btn.textContent = "دخول";
         }
-
-        return false;
       }
     </script>
   </body>
