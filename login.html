@@ -1,201 +1,232 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>تسجيل الدخول</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      background: white;
-      font-family: 'Cairo', Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.4s;
-    }
-    .login-bg {
-      width: 100vw;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-image: url(img/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-products-plain-studio-background.jpg);
-      backdrop-filter: blur(2px);
-    }
-    .login-card {
-      background: rgba(255,255,255,0.97);
-      border-radius: 22px;
-      box-shadow: 0 8px 40px rgba(0, 0, 8, 0.18);
-      padding: 2.7rem 2.2rem 2.2rem 2.2rem;
-      width: 370px;
-      max-width: 97vw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      animation: fadeIn 1.1s cubic-bezier(.39,.58,.57,1) both;
-    }
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(40px) scale(0.98); }
-      100% { opacity: 1; transform: none; }
-    }
-    .login-form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-      z-index: 1;
-    }
-    .login-form h2 {
-      text-align: center;
-      color: #000003;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-      font-size: 1.6rem;
-      letter-spacing: 1px;
-    }
-    .login-form label {
-      color: #000000;
-      font-size: 1.05rem;
-      margin-bottom: 0.2rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-    .login-form input {
-      padding: 0.9rem;
-      border: 1.5px solid #c7d2fe;
-      border-radius: 10px;
-      font-size: 1.08rem;
-      outline: none;
-      transition: border 0.2s, box-shadow 0.2s;
-      background: #f8fafc;
-      box-shadow: 0 1px 4px rgba(99,102,241,0.04);
-    }
-    .login-form input:focus {
-      border: 1.5px solid #000003;
-      box-shadow: 0 2px 8px #6366f13a;
-    }
-    .login-form .error {
-      color: #ef4444;
-      font-size: 1.01rem;
-      text-align: right;
-      margin-top: -0.7rem;
-      margin-bottom: -0.7rem;
-      background: #fee2e2;
-      border-radius: 6px;
-      padding: 0.3rem 0.7rem;
-      border: 1px solid #ef4444;
-      animation: shake 0.4s;
-    }
-    @keyframes shake {
-      10%, 90% { transform: translateX(-1px); }
-      20%, 80% { transform: translateX(2px); }
-      30%, 50%, 70% { transform: translateX(-4px); }
-      40%, 60% { transform: translateX(4px); }
-    }
-    .login-btn {
-      background: linear-gradient(90deg, #000000 0%, #000000 100%);
-      color: #fff;
-      border: none;
-      padding: 1.05rem;
-      border-radius: 10px;
-      font-size: 1.15rem;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 0.5rem;
-      transition: background 0.2s, box-shadow 0.2s;
-      box-shadow: 0 2px 12px rgba(99,102,241,0.10);
-      letter-spacing: 0.5px;
-    }
-    .login-btn:hover {
-      transform: scale(1.02);
-      box-shadow: 0 4px 18px #6366f13a;
-    }
-    @media (max-width: 480px) {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>تسجيل الدخول</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: white;
+        font-family: "Cairo", Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.4s;
+      }
+      .login-bg {
+        width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url(img/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-products-plain-studio-background.jpg);
+        backdrop-filter: blur(2px);
+      }
       .login-card {
-        padding: 1.5rem 0.5rem 1.2rem 0.5rem;
-        width: 98vw;
+        background: rgba(255, 255, 255, 0.97);
+        border-radius: 22px;
+        box-shadow: 0 8px 40px rgba(0, 0, 8, 0.18);
+        padding: 2.7rem 2.2rem 2.2rem 2.2rem;
+        width: 370px;
+        max-width: 97vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        animation: fadeIn 1.1s cubic-bezier(0.39, 0.58, 0.57, 1) both;
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(40px) scale(0.98);
+        }
+        100% {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .login-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+        z-index: 1;
       }
       .login-form h2 {
-        font-size: 1.1rem;
+        text-align: center;
+        color: #000003;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+      }
+      .login-form label {
+        color: #000000;
+        font-size: 1.05rem;
+        margin-bottom: 0.2rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+      .login-form input {
+        padding: 0.9rem;
+        border: 1.5px solid #c7d2fe;
+        border-radius: 10px;
+        font-size: 1.08rem;
+        outline: none;
+        transition: border 0.2s, box-shadow 0.2s;
+        background: #f8fafc;
+        box-shadow: 0 1px 4px rgba(99, 102, 241, 0.04);
+      }
+      .login-form input:focus {
+        border: 1.5px solid #000003;
+        box-shadow: 0 2px 8px #6366f13a;
+      }
+      .login-form .error {
+        color: #ef4444;
+        font-size: 1.01rem;
+        text-align: right;
+        margin-top: -0.7rem;
+        margin-bottom: -0.7rem;
+        background: #fee2e2;
+        border-radius: 6px;
+        padding: 0.3rem 0.7rem;
+        border: 1px solid #ef4444;
+        animation: shake 0.4s;
+      }
+      @keyframes shake {
+        10%,
+        90% {
+          transform: translateX(-1px);
+        }
+        20%,
+        80% {
+          transform: translateX(2px);
+        }
+        30%,
+        50%,
+        70% {
+          transform: translateX(-4px);
+        }
+        40%,
+        60% {
+          transform: translateX(4px);
+        }
       }
       .login-btn {
-        font-size: 1rem;
-        padding: 0.7rem;
+        background: linear-gradient(90deg, #000000 0%, #000000 100%);
+        color: #fff;
+        border: none;
+        padding: 1.05rem;
+        border-radius: 10px;
+        font-size: 1.15rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 0.5rem;
+        transition: background 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 12px rgba(99, 102, 241, 0.1);
+        letter-spacing: 0.5px;
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="login-bg">
-    <div class="login-card">
-      <form class="login-form" onsubmit="return handleLogin(event)">
-        <h2>تسجيل الدخول</h2>
-        <label for="code">الكود</label>
-        <input id="code" type="password" placeholder="أدخل الكود الخاص بك" autofocus required />
-        <div class="error" id="error" style="display:none"></div>
-        <button type="submit" class="login-btn" id="loginBtn">دخول</button>
-      </form>
+      .login-btn:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 18px #6366f13a;
+      }
+      @media (max-width: 480px) {
+        .login-card {
+          padding: 1.5rem 0.5rem 1.2rem 0.5rem;
+          width: 98vw;
+        }
+        .login-form h2 {
+          font-size: 1.1rem;
+        }
+        .login-btn {
+          font-size: 1rem;
+          padding: 0.7rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <div class="login-bg">
+      <div class="login-card">
+        <form class="login-form" onsubmit="return handleLogin(event)">
+          <h2>تسجيل الدخول</h2>
+          <label for="code">الكود</label>
+          <input
+            id="code"
+            type="password"
+            placeholder="أدخل الكود الخاص بك"
+            autofocus
+            required
+          />
+          <div class="error" id="error" style="display: none"></div>
+          <button type="submit" class="login-btn" id="loginBtn">دخول</button>
+        </form>
+      </div>
     </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/supabase.min.js"></script>
-  <script>
-    const supabase = supabase.createClient(
-      "https://dgyxalzqyafyjkbspfun.supabase.co",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRneXhhbHpxeWFmeWprYnNwZnVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIwNzQ5NDEsImV4cCI6MjA2NzY1MDk0MX0.3RJSsJTBsdM95m_Ov0oaPVqseEYYSHtQz4-_PI293yA"
-    );
+    <script>
+      // أنشئ كائن supabaseClient بعد تحميل المكتبة
+      const supabaseClient = supabase.createClient(
+        "https://dgyxalzqyafyjkbspfun.supabase.co",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRneXhhbHpxeWFmeWprYnNwZnVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIwNzQ5NDEsImV4cCI6MjA2NzY1MDk0MX0.3RJSsJTBsdM95m_Ov0oaPVqseEYYSHtQz4-_PI293yA"
+      );
 
-    async function handleLogin(e) {
-      e.preventDefault();
-      const code = document.getElementById("code").value.trim();
-      const errorDiv = document.getElementById("error");
-      const btn = document.getElementById("loginBtn");
+      async function handleLogin(e) {
+        e.preventDefault();
+        const code = document.getElementById("code").value.trim();
+        const errorDiv = document.getElementById("error");
+        const btn = document.getElementById("loginBtn");
+        console.log("الكود المدخل:", code);
 
-      errorDiv.style.display = "none";
-      btn.disabled = true;
-      btn.textContent = "جاري التحقق...";
+        errorDiv.style.display = "none";
+        btn.disabled = true;
+        btn.textContent = "جاري التحقق...";
 
-      try {
-        const { data, error } = await supabase
-          .from("codes")
-          .select("*")
-          .eq("code", code)
-          .single();
+        try {
+          const { data, error } = await supabaseClient
+            .from("codes")
+            .select("*")
+            .eq("code", code)
+            .maybeSingle();
+            
+            
 
-        btn.disabled = false;
-        btn.textContent = "دخول";
+          btn.disabled = false;
+          btn.textContent = "دخول";
 
-        if (error || !data) {
-          errorDiv.textContent = "الكود غير صحيح";
+          if (error || !data) {
+            errorDiv.textContent = "الكود غير صحيح";
+            errorDiv.style.display = "block";
+            return false;
+          }
+
+          const today = new Date().toISOString().split("T")[0];
+          if (data.expires_at < today) {
+            errorDiv.textContent = "انتهت صلاحية الكود";
+            errorDiv.style.display = "block";
+            return false;
+          }
+
+          // نجاح التحقق: انتقل لصفحة الفيديوهات
+          window.location.href = "index.html";
+        } catch (err) {
+          errorDiv.textContent = "حدث خطأ أثناء التحقق: " + err.message;
           errorDiv.style.display = "block";
-          return false;
+          btn.disabled = false;
+          btn.textContent = "دخول";
         }
 
-        const today = new Date().toISOString().split("T")[0];
-        if (data.expires_at < today) {
-          errorDiv.textContent = "انتهت صلاحية الكود";
-          errorDiv.style.display = "block";
-          return false;
-        }
-
-        // لو تبعّد دخول متكرر على نفس الكود لجهاز ثاني، تقدر تضيف تحقق هنا (مثلاً تخزين IP أو حالة دخول)
-        // الآن نعيد توجيه المستخدم لصفحة الفيديوهات
-        window.location.href = "index.html";
-      } catch (err) {
-        errorDiv.textContent = "حدث خطأ أثناء التحقق: " + err.message;
-        errorDiv.style.display = "block";
-        btn.disabled = false;
-        btn.textContent = "دخول";
+        return false;
       }
-
-      return false;
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>
