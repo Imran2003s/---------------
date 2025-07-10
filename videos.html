@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الفيديوهات التعليمية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: #fff;
+      font-family: 'Cairo', Arial, sans-serif;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+    .sidebar {
+      width: 220px;
+      min-height: 100vh;
+      background: #111;
+      color: #fff;
+      padding: 2.2rem 1.2rem 1.2rem 1.2rem;
+      box-shadow: 2px 0 16px #0001;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      position: sticky;
+      top: 0;
+    }
+    .sidebar-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      color: #fff;
+      text-align: right;
+    }
+    .sidebar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .sidebar-list li {
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      font-size: 1.08rem;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+      color: #fff;
+      text-align: right;
+    }
+    .sidebar-list li.active, .sidebar-list li:hover {
+      background: #fff;
+      color: #111;
+      font-weight: bold;
+    }
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      background: #fff;
+    }
+    .header {
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 2px 16px #0001;
+      padding: 1.5rem 0 1.2rem 0;
+      text-align: center;
+      font-size: 2.1rem;
+      color: #111;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 2.2rem;
+      border-bottom: 1.5px solid #eee;
+    }
+    .videos-container {
+      width: 100vw;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      justify-content: center;
+      padding-bottom: 2rem;
+    }
+    .video-grid-item {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+    }
+    .video-grid-item .video-title {
+      color: #111;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 0.7rem;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+    .video-grid-item .video-wrapper {
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1.5px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-grid-item iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 180px;
+      max-height: 360px;
+      border: none;
+      border-radius: 8px;
+      background: #000;
+      display: block;
+    }
+    @media (max-width: 900px) {
+      .videos-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+      .video-grid-item .video-wrapper {
+        min-width: 0;
+      }
+    }
+    @media (max-width: 600px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100vw;
+        min-height: unset;
+        flex-direction: row;
+        gap: 0.5rem;
+        padding: 0.7rem 0.2rem 0.7rem 0.2rem;
+        box-shadow: 0 2px 16px #0001;
+        position: static;
+        border-radius: 0;
+        justify-content: center;
+        align-items: center;
+      }
+      .sidebar-title {
+        display: none;
+      }
+      .sidebar-list {
+        flex-direction: row;
+        gap: 0.5rem;
+        width: 100vw;
+        justify-content: center;
+      }
+      .main-content {
+        width: 100vw;
+      }
+      .header {
+        font-size: 1.2rem;
+        padding: 0.7rem 0 0.5rem 0;
+      }
+      .videos-container {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+      }
+      .video-grid-item .video-wrapper {
+        max-width: 100vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-title">الأقسام</div>
+    <ul class="sidebar-list">
+      <li class="active" onclick="showSection('basic', this)">أساسيات</li>
+      <li onclick="showSection('intermediate', this)">متوسط</li>
+      <li onclick="showSection('advanced', this)">متقدم</li>
+    </ul>
+  </nav>
+  <div class="main-content">
+    <div class="header">الفيديوهات التعليمية</div>
+    <div class="videos-container" id="videosContainer">
+      <!-- سيتم تعبئة الفيديوهات ديناميكياً -->
+    </div>
+  </div>
+  <script>
+    // بيانات الفيديوهات لكل قسم
+    const videosData = {
+      'أساسيات': [
+        {
+          title: ' شرح اساسيات 1',
+          src: 'https://player.vimeo.com/video/76979871',
+          thumbnail: 'img/mythumb.jpg.jpg' // صورة مصغرة مناسبة
+        },
+        {
+          title: 'تعلم أساسيات Vite',
+          src: 'https://player.vimeo.com/video/357274789',
+          thumbnail: 'img/mythumb.jpg.jpg'
+        },
+        {
+          title: 'مقدمة في HTML',
+          src: 'https://i.vimeocdn.com/video/452001751-640x360.jpg', // صورة افتراضية
+          thumbnail: 'img/mythumb.jpg.jpg'
+        }
+      ],
+      'متوسط': [
+        {
+          title: 'مشروع عملي React متوسط',
+          src: 'https://player.vimeo.com/video/137857207',
+          thumbnail: 'img/mythumb.jpg.jpg'
+        },
+        {
+          title: 'تطبيقات متوسطة بـ Vite',
+          src: 'https://player.vimeo.com/video/395212534',
+          thumbnail: 'img/mythumb.jpg.jpg'
+        },
+        {
+          title: 'CSS Flexbox متقدم',
+          src: 'https://player.vimeo.com/video/259411563',
+          thumbnail: 'img/mythumb.jpg.jpg'
+        }
+      ],
+      'متقدم': [
+        {
+          title: 'إدارة الحالة في React',
+          src: 'https://player.vimeo.com/video/323303642',
+          thumbnail: 'img/mythumb.jpg.jpg'
+        },
+        {
+          title: 'بناء منصة فيديوهات كاملة',
+          src: 'https://player.vimeo.com/video/240975380',
+          thumbnail: 'img/mythumb.jpg.jpg'
+        },
+        {
+          title: 'تقنيات تحسين الأداء',
+          src: 'https://player.vimeo.com/video/148751763',
+          thumbnail: 'img/mythumb.jpg.jpg'
+        }
+      ]
+    };
+
+    // دالة لعرض الفيديوهات حسب القسم
+    function renderVideos(section) {
+      const container = document.getElementById('videosContainer');
+      container.innerHTML = '';
+      videosData[section].forEach((video, idx) => {
+        const videoDiv = document.createElement('div');
+        videoDiv.className = 'video-grid-item';
+        videoDiv.innerHTML = `
+          <div class="video-title">${video.title}</div>
+          <div class="video-wrapper">
+            <img src="${video.thumbnail}" alt="صورة مصغرة" class="video-thumb" data-idx="${idx}" style="width:100%;height:100%;object-fit:cover;cursor:pointer;border-radius:8px;" />
+          </div>
+        `;
+        container.appendChild(videoDiv);
+      });
+      // إضافة حدث الضغط على الصورة المصغرة
+      document.querySelectorAll('.video-thumb').forEach(img => {
+        img.addEventListener('click', function() {
+          const idx = this.getAttribute('data-idx');
+          const video = videosData[section][idx];
+          const wrapper = this.parentElement;
+          // استبدال الصورة بالفيديو
+          wrapper.innerHTML = `<iframe src="${video.src}?autoplay=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${video.title}" style="width:100%;height:100%;border-radius:8px;"></iframe>`;
+          // محاولة تفعيل ملء الشاشة تلقائياً
+          setTimeout(() => {
+            const iframe = wrapper.querySelector('iframe');
+            if (iframe && iframe.requestFullscreen) {
+              iframe.requestFullscreen();
+            } else if (iframe && iframe.webkitRequestFullscreen) {
+              iframe.webkitRequestFullscreen();
+            } else if (iframe && iframe.mozRequestFullScreen) {
+              iframe.mozRequestFullScreen();
+            } else if (iframe && iframe.msRequestFullscreen) {
+              iframe.msRequestFullscreen();
+            }
+          }, 300);
+        });
+      });
+    }
+
+    // تفعيل التبديل بين الأقسام
+    document.querySelectorAll('.sidebar-list li').forEach(li => {
+      li.addEventListener('click', function() {
+        document.querySelectorAll('.sidebar-list li').forEach(item => item.classList.remove('active'));
+        this.classList.add('active');
+        renderVideos(this.textContent.trim());
+      });
+    });
+
+    // عرض فيديوهات القسم الافتراضي عند التحميل
+    renderVideos('أساسيات');
+  </script>
+</body>
+</html>
